@@ -52,6 +52,8 @@ copy_df = None if my_df is None else my_df.copy()
 if copy_df is not None:
     copy_df['Principal'] = copy_df['Principal'].apply(lambda x: float(x.replace(',', '')))
     copy_df['Net-Amount'] = copy_df['Net-Amount'].apply(lambda x: float(x.replace(',', '')))
+    copy_df['QTY'] = copy_df['QTY'].apply(lambda x: int(x.replace(',', '')))
+    copy_df['QTY'] = pd.to_numeric(copy_df.QTY)
     copy_df['Principal'] = pd.to_numeric(copy_df.Principal)
     copy_df['Net-Amount'] = pd.to_numeric(copy_df['Net-Amount'])
     copy_df.to_csv('oprations.csv', encoding='utf-8-sig', index=False)
