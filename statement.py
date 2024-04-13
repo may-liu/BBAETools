@@ -50,6 +50,8 @@ for file in files:
 
 copy_df = None if my_df is None else my_df.copy()
 if copy_df is not None:
+    copy_df['Trade-Date'] = pd.to_datetime(copy_df['Trade-Date'])
+    copy_df['Settle-Date'] = pd.to_datetime(copy_df['Settle-Date'])
     copy_df['Principal'] = copy_df['Principal'].apply(lambda x: float(x.replace(',', '')))
     copy_df['Net-Amount'] = copy_df['Net-Amount'].apply(lambda x: float(x.replace(',', '')))
     copy_df['QTY'] = copy_df['QTY'].apply(lambda x: int(x.replace(',', '')))
